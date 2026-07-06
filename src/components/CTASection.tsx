@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 
 export function CTASection() {
@@ -26,12 +27,12 @@ export function CTASection() {
             tracking every batch in real time.
           </p>
           <div className="mt-9 flex items-center justify-center gap-4">
-            <a
-              href="#top"
+            <Link
+              to="/app"
               className="rounded-full px-7 py-3.5 text-sm font-semibold text-canvas bg-gradient-to-r from-[#8f9bff] via-[#22d3ee] to-[#c084fc] hover:opacity-90 transition-opacity"
             >
               Get started
-            </a>
+            </Link>
             <a
               href="#top"
               className="rounded-full px-7 py-3.5 text-sm font-medium border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all"

@@ -1,22 +1,26 @@
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { StepsShowcase } from './components/StepsShowcase';
-import { FeatureGrid } from './components/FeatureGrid';
-import { CTASection } from './components/CTASection';
-import { Footer } from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SessionProvider } from './context/SessionContext';
+import { Landing } from './pages/Landing';
+import { Onboarding } from './pages/Onboarding';
+import { Recommendation } from './pages/Recommendation';
+import { Learn } from './pages/Learn';
+import { Assessment } from './pages/Assessment';
+import { Dashboard } from './pages/Dashboard';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <StepsShowcase />
-        <FeatureGrid />
-        <CTASection />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <SessionProvider>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/app" element={<Onboarding />} />
+          <Route path="/app/recommendation" element={<Recommendation />} />
+          <Route path="/app/learn" element={<Learn />} />
+          <Route path="/app/assessment" element={<Assessment />} />
+          <Route path="/app/dashboard" element={<Dashboard />} />
+        </Routes>
+      </SessionProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 
 const LINKS = [
-  { label: 'How it builds', href: '#steps' },
+  { label: 'How it works', href: '#steps' },
   { label: 'Learner AI', href: '#ai-demo' },
   { label: 'Assessment', href: '#assessment' },
   { label: 'Operations', href: '#ops' },
@@ -42,12 +43,12 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
-          href="#cta"
+        <Link
+          to="/app"
           className="text-sm font-medium px-4 py-2 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
         >
           Request Access
-        </a>
+        </Link>
       </nav>
     </header>
   );
