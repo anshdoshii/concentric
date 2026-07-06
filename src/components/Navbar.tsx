@@ -27,7 +27,7 @@ export function Navbar() {
       <nav className="section flex items-center justify-between h-16">
         <a href="#top" className="flex items-center gap-2.5 shrink-0">
           <Logo size={26} />
-          <span className="font-semibold text-[15px] tracking-tight text-ink">Concentric</span>
+          <span className="font-semibold text-[15px] tracking-tight text-ink">Simplicity AI</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8 text-sm text-ink-dim">

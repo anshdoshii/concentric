@@ -54,14 +54,14 @@ export function StepsShowcase() {
       <div className="section">
         <div ref={headerRef} className="reveal max-w-[640px] mb-16">
           <span className="text-xs font-semibold tracking-wide text-accent-2 uppercase">
-            The build, in order
+            How it works
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
             Five steps. One continuous learner path.
           </h2>
           <p className="mt-4 text-ink-dim text-[15px] leading-relaxed">
-            This is the exact sequence a learner and a coordinator move through in the Phase 1
-            build — nothing here is a mockup of a future idea, it's the scope already committed.
+            This is the exact sequence every learner and coordinator moves through on Simplicity
+            AI — from a first-day profile to a placement-ready certification.
           </p>
         </div>
 

@@ -18,24 +18,24 @@ export function Hero() {
             style={{ animationDelay: '0ms' }}
           >
             <span className="pulse-dot" />
-            Phase 1 Prototype — built for review
+            1,248 learners currently enrolled
           </div>
 
           <h1
             className="hero-rise mt-6 text-[44px] sm:text-[58px] leading-[1.05] font-semibold tracking-tight"
             style={{ animationDelay: '80ms' }}
           >
-            The learning platform,{' '}
-            <span className="text-gradient-animated">built in the open.</span>
+            Learn with an AI that{' '}
+            <span className="text-gradient-animated">actually guides you.</span>
           </h1>
 
           <p
             className="hero-rise mt-6 text-lg text-ink-dim leading-relaxed max-w-[560px]"
             style={{ animationDelay: '180ms' }}
           >
-            A working walkthrough of the Phase&nbsp;1 build — the learner experience,
-            the AI that guides them, the assessment engine that certifies them, and the
-            operations console that runs it all. Scroll to see it come together.
+            Simplicity AI takes you from a five-minute profile to a personalised course, a
+            module-by-module AI tutor, and a certification-readiness score — with an operations
+            console that keeps trainers and coordinators in sync every step of the way.
           </p>
 
           <div className="hero-rise mt-9 flex items-center gap-4" style={{ animationDelay: '280ms' }}>
@@ -43,13 +43,13 @@ export function Hero() {
               href="#steps"
               className="rounded-full px-6 py-3 text-sm font-semibold text-canvas bg-gradient-to-r from-[#8f9bff] via-[#22d3ee] to-[#c084fc] hover:opacity-90 transition-opacity"
             >
-              See it built, step by step
+              See how it works
             </a>
             <a
               href="#ai-demo"
               className="rounded-full px-6 py-3 text-sm font-medium border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all"
             >
-              Jump to the AI demo
+              Meet the AI tutor
             </a>
           </div>
         </div>

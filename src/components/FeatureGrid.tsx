@@ -2,8 +2,8 @@ import { useReveal } from '../hooks/useReveal';
 
 const FEATURES = [
   {
-    title: 'Built on a real stack',
-    body: 'Next.js, TypeScript in strict mode, and PostgreSQL — not a demo held together with mocks. What you click here is architecturally the same as what ships.',
+    title: 'Built on a modern stack',
+    body: 'Next.js, TypeScript in strict mode, and PostgreSQL power every screen — a foundation built to stay reliable as the learner base grows.',
   },
   {
     title: 'AI with a fallback',
@@ -23,7 +23,7 @@ const FEATURES = [
   },
   {
     title: 'Typecheck-gated releases',
-    body: 'Strict TypeScript compilation is a release gate, not a suggestion — the kind of discipline that keeps a fast-moving MVP from rotting into technical debt.',
+    body: 'Strict TypeScript compilation is a release gate, not a suggestion — the kind of discipline that keeps the platform from accumulating technical debt as it grows.',
   },
 ];
 

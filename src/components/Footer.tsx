@@ -6,10 +6,10 @@ export function Footer() {
       <div className="section flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <Logo size={20} />
-          <span className="text-sm font-medium text-ink-dim">Concentric</span>
+          <span className="text-sm font-medium text-ink-dim">Simplicity AI</span>
         </div>
         <p className="text-xs text-ink-faint text-center sm:text-right">
-          Phase 1 prototype — built for review. Not a production deployment.
+          © 2026 Simplicity AI. All rights reserved.
         </p>
       </div>
     </footer>
