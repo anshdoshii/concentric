@@ -7,14 +7,19 @@ interface StepBlockProps {
   body: string;
   Visual: ComponentType;
   containerRef: (el: HTMLDivElement | null) => void;
+  anchorId?: string;
 }
 
-export function StepBlock({ tag, title, body, Visual, containerRef }: StepBlockProps) {
+export function StepBlock({ tag, title, body, Visual, containerRef, anchorId }: StepBlockProps) {
   const textRef = useReveal<HTMLDivElement>();
   const visualRef = useReveal<HTMLDivElement>();
 
   return (
-    <div ref={containerRef} className="grid sm:grid-cols-2 gap-10 items-center">
+    <div
+      ref={containerRef}
+      id={anchorId}
+      className="grid sm:grid-cols-2 gap-10 items-center scroll-mt-28"
+    >
       <div ref={textRef} className="reveal">
         <span className="lg:hidden text-xs font-semibold tracking-wide text-accent-2 uppercase">
           {tag}

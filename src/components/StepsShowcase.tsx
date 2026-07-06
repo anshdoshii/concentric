@@ -27,18 +27,21 @@ const STEPS = [
     title: 'Guided learning journey',
     body: 'Every module ships with an AI tutor scoped to that module’s content — answers are grounded, cached for repeat questions, and rate-limited so cost stays predictable at scale.',
     Visual: LearningJourneyVisual,
+    anchorId: 'ai-demo',
   },
   {
     tag: 'Step 4',
     title: 'Automated assessment & readiness scoring',
     body: 'Timed mocks, untimed practice, and spaced repetition on weak areas all roll up into one certification-readiness score — so trainers know exactly who is ready before an employer asks.',
     Visual: AssessmentVisual,
+    anchorId: 'assessment',
   },
   {
     tag: 'Step 5',
     title: 'Operations console',
     body: 'Coordinators see the entire pipeline — enrolment through placement — in one view, with batches, corporate partners, and open roles tracked alongside the learners moving through them.',
     Visual: OpsVisual,
+    anchorId: 'ops',
   },
 ];
 

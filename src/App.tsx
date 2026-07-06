@@ -1,6 +1,9 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StepsShowcase } from './components/StepsShowcase';
+import { FeatureGrid } from './components/FeatureGrid';
+import { CTASection } from './components/CTASection';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -9,7 +12,10 @@ function App() {
       <main>
         <Hero />
         <StepsShowcase />
+        <FeatureGrid />
+        <CTASection />
       </main>
+      <Footer />
     </>
   );
 }
