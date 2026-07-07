@@ -1,49 +1,49 @@
-import { useReveal } from '../hooks/useReveal';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const FEATURES = [
   {
-    title: 'Built on a modern stack',
-    body: 'Next.js, TypeScript in strict mode, and PostgreSQL power every screen — a foundation built to stay reliable as the learner base grows.',
+    title: 'One readiness score, not a spreadsheet',
+    body: 'Module completion and mock-assessment performance roll up into a single certification-readiness percentage — 80% is the line trainers use to sign off on a learner.',
   },
   {
-    title: 'AI with a fallback',
-    body: 'Every AI-dependent flow has a deterministic path underneath it. If the model is slow or unreachable, the learner still gets an answer.',
+    title: 'A tutor that stays on-topic',
+    body: 'Each module’s AI tutor only answers from that module’s own content, with responses cached for repeat questions and a per-learner rate limit so cost never runs ahead of usage.',
   },
   {
-    title: 'Cost-aware by design',
-    body: 'Module explanations are cached, tutor chat is rate-limited, and batch operations are throttled — so usage scales without the AI bill scaling faster than revenue.',
+    title: 'A recommendation with a fallback',
+    body: 'If the model is slow or unreachable, a rule-based match on career goal and availability still returns a course — a learner is never blocked on an API call.',
   },
   {
-    title: 'Mobile-first learners',
-    body: 'Built and tested against mid-range Android devices first, not as an afterthought — because that is the primary device for this audience.',
+    title: 'Five stages, one pipeline',
+    body: 'Enrolled → Training → Assessment → Certified → Placed. Every learner sits in exactly one stage, and coordinators see the whole cohort move through it in real time.',
   },
   {
-    title: 'One pipeline, two audiences',
-    body: 'The same learner record flows from enrolment through certification into the placement pipeline, so coordinators never re-enter data trainers already captured.',
+    title: 'Built for the phone in their pocket',
+    body: 'Designed and tested against mid-range Android hardware first — because that, not a laptop, is how most learners in this program will actually show up.',
   },
   {
-    title: 'Typecheck-gated releases',
-    body: 'Strict TypeScript compilation is a release gate, not a suggestion — the kind of discipline that keeps the platform from accumulating technical debt as it grows.',
+    title: 'Zero-error release gate',
+    body: 'TypeScript strict mode compiles clean on every release, no exceptions — the discipline that keeps a platform this fast-moving from quietly rotting underneath.',
   },
 ];
 
 export function FeatureGrid() {
-  const headerRef = useReveal<HTMLDivElement>();
-  const gridRef = useReveal<HTMLDivElement>();
+  const headerRef = useScrollReveal<HTMLDivElement>({ animation: 'fadeUp' });
+  const gridRef = useScrollReveal<HTMLDivElement>({ animation: 'fadeUp', stagger: true, staggerAmount: 0.09 });
 
   return (
-    <section className="relative py-24 border-t border-white/5">
+    <section id="hood" className="relative py-24 border-t border-white/5 scroll-mt-20">
       <div className="section">
-        <div ref={headerRef} className="reveal max-w-[560px] mb-14">
+        <div ref={headerRef} className="max-w-[560px] mb-14">
           <span className="text-xs font-semibold tracking-wide text-accent-2 uppercase">
-            Why it holds up
+            Under the hood
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
-            Engineering decisions, not just screens.
+            The details that hold up under load.
           </h2>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {FEATURES.map((f) => (
             <div
               key={f.title}

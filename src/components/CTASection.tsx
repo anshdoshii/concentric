@@ -1,22 +1,30 @@
 import { Link } from 'react-router-dom';
-import { useReveal } from '../hooks/useReveal';
+import { useScrollReveal, useParallax } from '../hooks/useScrollReveal';
 
 export function CTASection() {
-  const ref = useReveal<HTMLDivElement>();
+  const ref = useScrollReveal<HTMLDivElement>({ animation: 'fadeUp' });
+  const blob1Ref = useParallax<HTMLDivElement>(0.15);
+  const blob2Ref = useParallax<HTMLDivElement>(-0.1);
 
   return (
     <section id="cta" className="relative py-28 overflow-hidden">
-      <div
-        className="aurora-blob aurora-1 w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2"
-        style={{ background: 'radial-gradient(circle, #6e7bff, transparent 70%)' }}
-      />
-      <div
-        className="aurora-blob aurora-2 w-[420px] h-[420px] bottom-0 right-10"
-        style={{ background: 'radial-gradient(circle, #c084fc, transparent 70%)' }}
-      />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2">
+        <div ref={blob1Ref}>
+          <div
+            className="aurora-blob aurora-1 w-[600px] h-[600px]"
+            style={{ background: 'radial-gradient(circle, #6e7bff, transparent 70%)' }}
+          />
+        </div>
+      </div>
+      <div ref={blob2Ref} className="absolute bottom-0 right-10">
+        <div
+          className="aurora-blob aurora-2 w-[420px] h-[420px]"
+          style={{ background: 'radial-gradient(circle, #c084fc, transparent 70%)' }}
+        />
+      </div>
 
       <div className="section relative text-center">
-        <div ref={ref} className="reveal max-w-[640px] mx-auto">
+        <div ref={ref} className="max-w-[640px] mx-auto">
           <h2 className="text-3xl sm:text-[44px] leading-tight font-semibold tracking-tight">
             Your next cohort is one profile{' '}
             <span className="text-gradient">away from starting.</span>

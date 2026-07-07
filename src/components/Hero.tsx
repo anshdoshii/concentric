@@ -1,15 +1,24 @@
+import { useParallax } from '../hooks/useScrollReveal';
+
 export function Hero() {
+  const blob1Ref = useParallax<HTMLDivElement>(0.18);
+  const blob2Ref = useParallax<HTMLDivElement>(-0.12);
+
   return (
     <section id="top" className="relative pt-40 pb-28 overflow-hidden">
       <div className="absolute inset-0 -z-10 noise-bg opacity-40" />
-      <div
-        className="aurora-blob aurora-1 w-[520px] h-[520px] -top-40 -left-40"
-        style={{ background: 'radial-gradient(circle, #6e7bff, transparent 70%)' }}
-      />
-      <div
-        className="aurora-blob aurora-2 w-[460px] h-[460px] top-20 right-[-160px]"
-        style={{ background: 'radial-gradient(circle, #22d3ee, transparent 70%)' }}
-      />
+      <div ref={blob1Ref} className="absolute -top-40 -left-40">
+        <div
+          className="aurora-blob aurora-1 w-[520px] h-[520px]"
+          style={{ background: 'radial-gradient(circle, #6e7bff, transparent 70%)' }}
+        />
+      </div>
+      <div ref={blob2Ref} className="absolute top-20 right-[-160px]">
+        <div
+          className="aurora-blob aurora-2 w-[460px] h-[460px]"
+          style={{ background: 'radial-gradient(circle, #22d3ee, transparent 70%)' }}
+        />
+      </div>
 
       <div className="section relative">
         <div className="max-w-[760px]">
@@ -18,24 +27,24 @@ export function Hero() {
             style={{ animationDelay: '0ms' }}
           >
             <span className="pulse-dot" />
-            1,248 learners currently enrolled
+            1,248 learners currently enrolled · 24 active batches
           </div>
 
           <h1
             className="hero-rise mt-6 text-[44px] sm:text-[58px] leading-[1.05] font-semibold tracking-tight"
             style={{ animationDelay: '80ms' }}
           >
-            Learn with an AI that{' '}
-            <span className="text-gradient-animated">actually guides you.</span>
+            One profile in.{' '}
+            <span className="text-gradient-animated">A certified learner out.</span>
           </h1>
 
           <p
             className="hero-rise mt-6 text-lg text-ink-dim leading-relaxed max-w-[560px]"
             style={{ animationDelay: '180ms' }}
           >
-            Simplicity AI takes you from a five-minute profile to a personalised course, a
-            module-by-module AI tutor, and a certification-readiness score — with an operations
-            console that keeps trainers and coordinators in sync every step of the way.
+            A five-minute intake becomes a personalised course, a module-scoped AI tutor, and a
+            certification-readiness score — with an operations console keeping every batch,
+            trainer, and corporate partner in sync behind the scenes.
           </p>
 
           <div className="hero-rise mt-9 flex items-center gap-4" style={{ animationDelay: '280ms' }}>
@@ -46,7 +55,7 @@ export function Hero() {
               See how it works
             </a>
             <a
-              href="#ai-demo"
+              href="#steps"
               className="rounded-full px-6 py-3 text-sm font-medium border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all"
             >
               Meet the AI tutor

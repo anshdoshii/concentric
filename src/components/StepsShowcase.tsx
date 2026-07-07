@@ -1,5 +1,6 @@
+import { usePinnedProgress } from '../hooks/usePinnedProgress';
 import { useActiveSection } from '../hooks/useActiveSection';
-import { useReveal } from '../hooks/useReveal';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import { StepBlock } from './StepBlock';
 import {
   OnboardingVisual,
@@ -45,14 +46,86 @@ const STEPS = [
   },
 ];
 
-export function StepsShowcase() {
+function StepRail({ activeIndex }: { activeIndex: number }) {
+  return (
+    <div className="space-y-1">
+      {STEPS.map((s, i) => (
+        <div
+          key={s.tag}
+          className="relative pl-6 py-3.5 border-l-2 transition-colors duration-300"
+          style={{ borderColor: activeIndex === i ? 'var(--color-accent-2)' : 'var(--color-border)' }}
+        >
+          <div
+            className="text-[11px] font-semibold tracking-wide uppercase transition-colors duration-300"
+            style={{ color: activeIndex === i ? 'var(--color-accent-2)' : 'var(--color-ink-faint)' }}
+          >
+            {s.tag}
+          </div>
+          <div
+            className="text-sm mt-1 transition-colors duration-300"
+            style={{ color: activeIndex === i ? 'var(--color-ink)' : 'var(--color-ink-faint)' }}
+          >
+            {s.title}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Desktop: the section pins full-screen while scrolling drives which step's scene is on stage. */
+function PinnedScene({ activeIndex }: { activeIndex: number }) {
+  const step = STEPS[activeIndex];
+  return (
+    <div className="h-screen flex items-center overflow-hidden">
+      <div className="section w-full">
+        <div className="grid grid-cols-[240px_1fr] gap-16 items-center">
+          <StepRail activeIndex={activeIndex} />
+          <div key={activeIndex} className="scene-enter grid grid-cols-2 gap-10 items-center">
+            <div>
+              <span className="text-xs font-semibold tracking-wide text-accent-2 uppercase">
+                {step.tag}
+              </span>
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight">{step.title}</h3>
+              <p className="mt-3 text-ink-dim text-[15px] leading-relaxed">{step.body}</p>
+            </div>
+            <div className="flex justify-start">
+              <step.Visual />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Mobile / reduced-motion: normal stacked flow with per-block scroll reveals. */
+function StackedFallback() {
   const { active, setRef } = useActiveSection(STEPS.length);
-  const headerRef = useReveal<HTMLDivElement>();
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16">
+      <div className="hidden lg:block">
+        <div className="sticky top-32">
+          <StepRail activeIndex={active} />
+        </div>
+      </div>
+      <div className="space-y-28">
+        {STEPS.map((s, i) => (
+          <StepBlock key={s.tag} {...s} containerRef={setRef(i)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function StepsShowcase() {
+  const { sectionRef, activeIndex, pinned } = usePinnedProgress(STEPS.length);
+  const headerRef = useScrollReveal<HTMLDivElement>({ animation: 'fadeUp' });
 
   return (
-    <section id="steps" className="relative py-28">
-      <div className="section">
-        <div ref={headerRef} className="reveal max-w-[640px] mb-16">
+    <section id="steps" className="relative">
+      <div className={pinned ? 'section pt-28' : 'section py-28'}>
+        <div ref={headerRef} className="max-w-[640px] mb-16">
           <span className="text-xs font-semibold tracking-wide text-accent-2 uppercase">
             How it works
           </span>
@@ -64,43 +137,10 @@ export function StepsShowcase() {
             AI — from a first-day profile to a placement-ready certification.
           </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16">
-          {/* Sticky step rail */}
-          <div className="hidden lg:block">
-            <div className="sticky top-32 space-y-1">
-              {STEPS.map((s, i) => (
-                <div
-                  key={s.tag}
-                  className="relative pl-6 py-3.5 border-l-2 transition-colors duration-300"
-                  style={{
-                    borderColor: active === i ? 'var(--color-accent-2)' : 'var(--color-border)',
-                  }}
-                >
-                  <div
-                    className="text-[11px] font-semibold tracking-wide uppercase transition-colors duration-300"
-                    style={{ color: active === i ? 'var(--color-accent-2)' : 'var(--color-ink-faint)' }}
-                  >
-                    {s.tag}
-                  </div>
-                  <div
-                    className="text-sm mt-1 transition-colors duration-300"
-                    style={{ color: active === i ? 'var(--color-ink)' : 'var(--color-ink-faint)' }}
-                  >
-                    {s.title}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Step content */}
-          <div className="space-y-28">
-            {STEPS.map((s, i) => (
-              <StepBlock key={s.tag} {...s} containerRef={setRef(i)} />
-            ))}
-          </div>
-        </div>
+      <div ref={sectionRef} style={pinned ? { height: `${STEPS.length * 100}vh` } : undefined}>
+        {pinned ? <PinnedScene activeIndex={activeIndex} /> : <div className="section"><StackedFallback /></div>}
       </div>
     </section>
   );

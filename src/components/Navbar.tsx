@@ -4,9 +4,7 @@ import { Logo } from './Logo';
 
 const LINKS = [
   { label: 'How it works', href: '#steps' },
-  { label: 'Learner AI', href: '#ai-demo' },
-  { label: 'Assessment', href: '#assessment' },
-  { label: 'Operations', href: '#ops' },
+  { label: 'Under the hood', href: '#hood' },
 ];
 
 export function Navbar() {
